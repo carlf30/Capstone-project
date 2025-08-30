@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PHQ-9 Self-Assessment</title>
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="capstone.css" />
+
+  <!-- PDF library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>
+
+  <!-- App logic -->
+  <script defer src="App.js"></script>
+</head>
+<body>
+  <div class="auth-wrapper">
+    <div class="auth-card">
+      <header class="auth-header">
+        <h1>Mood Assessment At Home</h1>
+        <p class="subtitle">A Secure & Private Screening using the PHQ-9 Tool</p>
+        <div class="tabbar">
+          <button id="tab-login" class="tab active" type="button">Login</button>
+          <button id="tab-register" class="tab" type="button">Register</button>
+        </div>
+      </header>
+
+      <main class="auth-main">
+        <!-- LOGIN -->
+        <section id="pane-login" class="pane fade in">
+          <form id="loginForm">
+            <label for="loginEmail">Email</label>
+            <input id="loginEmail" type="email" required />
+
+            <label for="loginPassword">Password</label>
+            <input id="loginPassword" type="password" required />
+
+            <button type="submit" class="btn primary">Login</button>
+            <p id="loginMsg" class="form-msg"></p>
+          </form>
+        </section>
+
+        <!-- REGISTER -->
+        <section id="pane-register" class="pane fade hidden">
+          <form id="registerForm">
+            <label for="regName">Full name</label>
+            <input id="regName" type="text" required />
+
+            <label for="regEmail">Email</label>
+            <input id="regEmail" type="email" required />
+
+            <label for="regPassword">Password</label>
+            <input id="regPassword" type="password" minlength="8" required />
+
+            <button type="submit" class="btn primary">Register</button>
+            <button type="button" id="toLogin" class="btn secondary">Back to login</button>
+            <p id="registerMsg" class="form-msg"></p>
+          </form>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <!-- PHQ-9 + Results -->
+  <div id="app" class="app hidden fade"></div>
+</body>
+</html>
