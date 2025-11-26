@@ -1,0 +1,153 @@
+:root {
+  --bg1: #1e293b;
+  --bg2: #0f172a;
+  --card: #1e293b;
+  --muted: #94a3b8;
+  --text: #e2e8f0;
+  --primary: #3b82f6;
+  --primary-600: #2563eb;
+  --line: #334155;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+  background: linear-gradient(135deg, var(--bg1), var(--bg2));
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+}
+
+/* Auth */
+.auth-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 24px;
+}
+
+.auth-card {
+  background: var(--card);
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(0,0,0,.5);
+  width: 100%;
+  max-width: 400px;
+  padding: 32px;
+  animation: scaleIn .4s ease;
+  background: rgba(0, 0, 0, 0.6); /* semi-transparent for contrast */
+}
+
+.auth-header { 
+  text-align: center; 
+  margin-bottom: 24px;
+ }
+.auth-header h1 { 
+  font-size: 1.6rem; 
+  margin: 0 0 8px; 
+}
+.subtitle { 
+  font-size: 0.95rem; 
+  color: var(--muted); 
+  margin: 0; 
+}
+
+.tabbar { 
+  display: flex; 
+  margin-top: 16px; 
+  border-bottom: 1px solid var(--line); }
+.tabbar .tab { 
+  flex: 1; 
+  padding: 10px; 
+  background: none; 
+  border: none; 
+  color: var(--muted); 
+  cursor: pointer; font-weight: 700; transition: color 0.2s; }
+
+.tabbar .tab.active { 
+  color: #60a5fa; 
+  border-bottom: 2px solid #60a5fa; 
+}
+
+/* Forms */
+form { 
+  display: flex; 
+  flex-direction: column; 
+  gap: 14px; }
+
+label { 
+  font-size: 0.92rem;
+ }
+input, select {
+  padding: 10px; 
+  border-radius: 10px;
+   border: 1px solid var(--line);
+  background: var(--bg2); 
+  color: var(--text); 
+  font-size: 1rem;
+}
+input:focus, select:focus {
+   border-color: #60a5fa; 
+   outline: none; 
+  }
+
+.btn { 
+  padding: 10px; 
+  border-radius: 10px; 
+  font-weight: 700; cursor: pointer; 
+  transition: all 0.2s; 
+  border: none; 
+}
+
+.btn.primary { 
+  background: var(--primary); 
+  color: #fff; 
+}
+.btn.primary:hover { 
+  background: var(--primary-600);
+ }
+
+.btn.secondary {
+   background: #475569; 
+   color: #fff;
+   }
+.btn.ghost { 
+  background: none; 
+  border: 1px solid #475569; 
+  color: var(--muted); 
+}
+
+.btn.ghost:hover {
+   border-color: var(--primary); 
+   color: var(--primary); 
+  }
+
+.form-msg { 
+  font-size: 0.85rem;
+   color: var(--muted); 
+   margin-top: 4px; 
+  }
+
+.hidden { 
+  display: none;
+ }
+body {
+  background:
+    url('https://media.istockphoto.com/id/1294477039/vector/metaphor-bipolar-disorder-mind-mental-double-face-split-personality-concept-mood-disorder-2.jpg?s=612x612&w=0&k=20&c=JtBxyFapXIA63hzZk_F5WNDF92J8fD2gIFNX3Ta4U3A=') center / cover no-repeat,
+    linear-gradient(135deg, var(--bg1), var(--bg2));
+}
+
+
+
+/* Fade/slide animation */
+.pane.fade, .app.fade { opacity: 0; transform: translateY(15px); transition: all 0.35s ease; position: absolute; width: 100%; }
+.pane.fade.in, .app.fade.in { opacity: 1; transform: translateY(0); position: relative; }
+.auth-main { position: relative; min-height: 280px; }
+
+@keyframes scaleIn { from { transform: scale(0.95); opacity: 0; } to { transform: scale(1); opacity: 1; } }
