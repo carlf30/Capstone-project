@@ -39,7 +39,7 @@ The goal of this web app is to let a user:
 - HTML5
 - CSS3
 - JavaScript (ES6+)
-- `localStorage` for user and assessment data
+
 
 ### React version (`phq9-react/`)
 
@@ -51,6 +51,16 @@ The goal of this web app is to let a user:
 - [pdfMake](https://pdfmake.github.io/docs/) for PDF generation and encryption
 
 ---
+## Backend Repository
+
+This capstone project uses a separate backend repository for the Next.js + MongoDB API:
+
+**Backend repo:** https://github.com/carlf30/phq9-next
+
+The backend implements:
+- `GET /api/assessments?email={userEmail}` – list stored assessments
+- `POST /api/assessments` – save a new PHQ-9 result
+- `GET /api/assessments/:id`, `PUT`, `DELETE` – single assessment CRUD
 
 ## 3. Project Structure
 
@@ -77,3 +87,4 @@ Capstone-project/
         AuthCard.jsx
         Phq9Form.jsx
         ResultsView.jsx
+
