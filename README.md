@@ -1,90 +1,164 @@
-# PHQ-9 Mood Assessment Web App
+# PHQ-9 Self-Assessment Tool
 
-This project implements a secure, browser-based version of the **PHQ-9** depression screening questionnaire, with:
+A privacy-focused web application that allows users to complete the PHQ-9 depression screening questionnaire, view an automatically calculated severity score, read a mission statement about the tool’s purpose, and export their results as a password-protected PDF.
 
-- User registration & login
-- Local, salted SHA-256 password hashing
-- PHQ-9 scoring and severity classification
-- Encrypted PDF export of results
-- A mission statement page describing the purpose and limitations of the tool
+> **Important:** This project is for educational and portfolio purposes only. It is not a diagnostic tool and does not replace care from a licensed medical or mental health professional.
 
-The project exists in **two forms**:
+## Live Demo
 
-1. An original **vanilla HTML/CSS/JavaScript** version  
-2. A refactored **React** single-page application in [`phq9-react/`](./phq9-react)
-
----
-
-## 1. Project Overview
-
-The goal of this web app is to let a user:
-
-1. Create an account and log in
-2. Complete the PHQ-9 questionnaire privately
-3. See their total score and severity category
-4. Download an **encrypted PDF** of their responses, secured with a password they choose
-
-
-> ⚠️ **Important Disclaimer**  
-> This tool is for **educational and demonstration purposes only**.  
-> It does **not** provide a medical diagnosis and is **not** a substitute for professional evaluation or treatment.  
-> If you are in crisis, or have thoughts of self-harm, please contact a qualified mental health professional or emergency services immediately.
-
----
-
-## 2. Tech Stack
-
-### Vanilla version (root)
-
-- HTML5
-- CSS3
-- JavaScript (ES6+)
-
-
-### React version (`phq9-react/`)
-
-- [React](https://react.dev/)
-- [Vite](https://vitejs.dev/) (build tool / dev server)
-- Client-side crypto APIs:
-  - `crypto.getRandomValues` for per-user salts
-  - `crypto.subtle.digest('SHA-256', ...)` for password hashing
-- [pdfMake](https://pdfmake.github.io/docs/) for PDF generation and encryption
-
----
-## Backend Repository
-
-This capstone project uses a separate backend repository for the Next.js + MongoDB API:
-
-**Backend repo:** https://github.com/carlf30/phq9-next
-
-The backend implements:
-- `GET /api/assessments?email={userEmail}` – list stored assessments
-- `POST /api/assessments` – save a new PHQ-9 result
-- `GET /api/assessments/:id`, `PUT`, `DELETE` – single assessment CRUD
-
-## 3. Project Structure
-
-At a high level:
+Add your deployed link here:
 
 ```text
-Capstone-project/
-  Capstone.html        # Original static version (HTML/CSS/JS)
-  App.js
-  capstone.css
+Live Demo: https://carlf30.github.io/YOUR_REPO_NAME/
+```
 
-  phq9-react/          # React SPA version (Vite)
-    index.html
-    package.json
-    vite.config.js
-    src/
-      main.jsx
-      App.jsx
-      capstone.css     # Shared styling, adapted for React
-      logic/
-        phq9Logic.js   # PHQ-9 questions, scoring, auth, PDF logic
-      components/
-        MissionStatement.jsx
-        AuthCard.jsx
-        Phq9Form.jsx
-        ResultsView.jsx
+## Features
 
+- Login/register demo flow
+- Mission statement page after login
+- PHQ-9 questionnaire with all 9 items
+- Required-answer validation
+- Automatic score calculation
+- Severity interpretation
+- Results screen
+- Password-protected PDF export
+- Back-to-mission navigation
+- Responsive dark-themed UI
+- Local browser storage for demo accounts
+
+## Tech Stack
+
+### Static Version
+- HTML
+- CSS
+- JavaScript
+- localStorage
+- Web Crypto API
+- pdfmake
+
+### React Upgrade Version
+- React
+- Vite
+- React Router
+- Component-based architecture
+- Persistent session state
+- pdfmake
+
+## PHQ-9 Scoring
+
+| Score | Severity |
+|---:|---|
+| 0–4 | Minimal |
+| 5–9 | Mild |
+| 10–14 | Moderate |
+| 15–19 | Moderately Severe |
+| 20–27 | Severe |
+
+## Application Flow
+
+```text
+Login/Register
+      ↓
+Mission Statement
+      ↓
+PHQ-9 Questionnaire
+      ↓
+Score + Severity Results
+      ↓
+Encrypted PDF Export
+```
+
+## Screenshots
+
+Add screenshots in an `/assets/screenshots` folder:
+
+```text
+assets/screenshots/login.png
+assets/screenshots/mission.png
+assets/screenshots/questionnaire.png
+assets/screenshots/results.png
+assets/screenshots/pdf-export.png
+```
+
+## Local Installation
+
+### Static Version
+
+Open `index.html` directly in a browser.
+
+### React Version
+
+```bash
+npm install
+npm run dev
+```
+
+Then open:
+
+```text
+http://localhost:5173
+```
+
+## Deployment
+
+See `DEPLOYMENT.md`.
+
+## API Design Roadmap
+
+Current version is front-end only. A future full-stack version could include:
+
+- `POST /api/auth/register`
+- `POST /api/auth/login`
+- `GET /api/users/me`
+- `POST /api/phq9/assessments`
+- `GET /api/phq9/assessments`
+- `GET /api/phq9/assessments/:id`
+- `POST /api/phq9/assessments/:id/pdf`
+
+See `docs/API_DESIGN.md`.
+
+## Security Notes
+
+This project uses localStorage for demo authentication. That is acceptable for a portfolio prototype but not for production health data.
+
+For production:
+- Use a secure backend.
+- Hash passwords server-side with bcrypt or Argon2.
+- Use HTTPS.
+- Use proper session management.
+- Encrypt sensitive data at rest and in transit.
+- Avoid storing PHI in localStorage.
+- Add audit logging.
+- Use hosting vendors that sign a BAA if handling PHI.
+
+## Portfolio Highlights
+
+This project demonstrates:
+
+- Front-end form workflows
+- Client-side validation
+- Health-related UX considerations
+- Score calculation logic
+- File generation and export
+- Authentication design concepts
+- React component planning
+- API endpoint planning
+- Security and privacy awareness
+
+## Future Improvements
+
+- React component migration
+- Backend API with Node.js/Express
+- MongoDB or PostgreSQL database
+- Assessment history
+- User dashboard
+- Score trend charts
+- Role-based clinician view
+- Accessibility improvements
+- Unit tests for scoring logic
+- Integration tests for assessment flow
+- Full OpenAPI documentation
+
+## Disclaimer
+
+The PHQ-9 is a screening instrument. This application does not provide a diagnosis, medical advice, treatment recommendations, or emergency services. If you are in crisis or thinking about self-harm, contact emergency services or a crisis hotline immediately.
